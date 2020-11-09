@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">covid19-Tracker</string>
+
+    <string name="symptostr">Most common symptoms:
+fever
+
+
+dry cough
+tiredness
+Less common symptoms:
+aches and pains
+sore throat
+diarrhoea
+conjunctivitis
+headache
+loss of taste or smell
+a rash on skin, or discolouration of fingers or toes
+Serious symptoms:
+difficulty breathing or shortness of breath
+chest pain or pressure
+loss of speech or movement</string>
+</resources>

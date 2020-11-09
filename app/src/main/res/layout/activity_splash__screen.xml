@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Splash_Screen">
+
+
+    <ImageView
+        android:id="@+id/caro"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:src="@drawable/carona"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="86dp"
+        >
+    </ImageView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TrAcKer"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_below="@+id/caro"
+        android:layout_marginLeft="150dp"
+        android:textSize="45dp"></TextView>
+
+
+
+</RelativeLayout>
