@@ -8,67 +8,51 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.example.covid19_tracker.Model.Response
+import com.example.covid19_tracker.Retrofit.Common
+import com.example.covid19_tracker.Retrofit.Reterofit_Service
+import kotlinx.android.synthetic.main.activity_news.*
+import retrofit2.Call
+import retrofit2.Callback
 import java.util.Calendar.getInstance
 
-class NewsActivity : AppCompatActivity(), NewsItemClicked {
-    private lateinit var  mAdapter: newsadapter
+class NewsActivity : AppCompatActivity(){
+    lateinit var mAdapter: NewsAdapter
+    lateinit var mService: Reterofit_Service
+    lateinit var layoutManager: LinearLayoutManager
 
-    private lateinit var recyclerView1:RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
-        recyclerView1 = findViewById(R.id.recyclerView1)
-
-        recyclerView1.layoutManager = LinearLayoutManager(this)
-        fetchdata()
-        mAdapter = newsadapter(this)
-        recyclerView1.adapter = mAdapter
-    }
-    private  fun fetchdata() {
-
-        val url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=9af757f8a2b4449fa1e8f85c82deeaa2"
-        val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                {
-                    val newsJsonArray = it.getJSONArray("articles")
-                    val newsArray = ArrayList<News>()
-                    for(i in 0 until newsJsonArray.length()){
-                        val  newsJSONObject =newsJsonArray.getJSONObject(i)
-                        val news =News(
-                                newsJSONObject.getString("title"),
-                                newsJSONObject.getString("author"),
-                                newsJSONObject.getString("url"),
-                                newsJSONObject.getString("urlToImage")
-
-                        )
-
-                        newsArray.add(news)
-
-                    }
-
-                    mAdapter.upadtedNews(newsArray)
 
 
-                },
-                {
 
-                }
-        )
-        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
+        mService = Common.reterofitService
+
+        news_recycler.setHasFixedSize(true)
+        layoutManager = LinearLayoutManager(this)
+        news_recycler.layoutManager = layoutManager
+
+        getAllNews()
+
 
     }
 
-    override fun onItemClicked(item: News) {
+    private fun getAllNews() {
+        mService.getNews().enqueue(object : Callback<Response> {
+            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
+                val newsList = response.body()!!.articles
+                mAdapter = NewsAdapter(newsList)
+                news_recycler.adapter = mAdapter
 
-        val builder =  CustomTabsIntent.Builder();
-        val  customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(this, Uri.parse(item.url));
+            }
+
+            override fun onFailure(call: Call<Response>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+
+        })
     }
-
-
-
-
 
 }

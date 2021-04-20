@@ -181,7 +181,7 @@
                        android:background="@drawable/bglog"
                        android:layout_marginLeft="28dp"
                        android:layout_marginBottom="4dp"
-                       android:text="click"
+                       android:text="World Report"
                        android:textStyle="bold"
                        android:layout_marginRight="50dp"
                        android:textColor="@color/black">
@@ -224,7 +224,6 @@
                        </ImageView>
 
 
-
                    </LinearLayout>
 
                    <Button
@@ -235,7 +234,7 @@
                        android:background="@drawable/bglog"
                        android:layout_marginLeft="38dp"
                        android:layout_marginBottom="4dp"
-                       android:text="click"
+                       android:text="Indian report"
                        android:textStyle="bold"
                        android:textColor="@color/black">
 
@@ -272,7 +271,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="156dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/covidnews">
+                            android:src="@drawable/vaccine">
 
                         </ImageView>
 
@@ -286,7 +285,7 @@
                         android:background="@drawable/bglog"
                         android:layout_marginLeft="28dp"
                         android:layout_marginBottom="4dp"
-                        android:text="click"
+                        android:text="Covid News"
                         android:textStyle="bold"
                         android:layout_marginRight="50dp"
                         android:textColor="@color/black">
@@ -336,7 +335,7 @@
                         android:background="@drawable/bglog"
                         android:layout_marginLeft="38dp"
                         android:layout_marginBottom="4dp"
-                        android:text="click"
+                        android:text="Nearby cases"
                         android:textStyle="bold"
                         android:textColor="@color/black">
 
@@ -360,7 +359,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 </ScrollView>
